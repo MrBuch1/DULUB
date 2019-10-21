@@ -7,7 +7,7 @@
 
 <div class="container mt-5" align="center">
     @foreach ($noticia as $n)
-        <a href="#"><h3>{{ $n->titulo }}</h3></a>
+        <a href="#" style="color:black"><h3>{{ $n->titulo }}</h3></a>
         <img class="image-responsive" src="{{ asset("storage/$n->imagem") }}" alt="" style="width:25%">
     @endforeach
     <h1></h1>
