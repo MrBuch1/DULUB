@@ -6,7 +6,7 @@
 </div>
 
 <div class="container">
-    <h1 style="text-decoration:underline" align="center"><strong>LINHA AUTOMOTIVO OTTO</strong></h1>
+    <h1 style="text-decoration:underline" align="center"><strong>LINHA HIDRÁULICOS</strong></h1>
 </div>
 
 <div class="container-fluid mt-5">

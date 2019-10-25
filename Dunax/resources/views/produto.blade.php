@@ -32,11 +32,14 @@
             <div class="row mb-5">
                 <div class="col-sm">
                     <h1><strong>{{ $registros->nome }}</strong></h1>
-                    <hr>
+                    <hr><br>
+                    <h4><strong>{{ $registros->uso }}</strong></h4>
                     <h5>{{ $registros->descricao }}</h5>
-                    <a href="{{ route('ficha', $registros->id) }}">Ficha Técnica</a>
-                    |
-                    <a href="{{ route('fispq', $registros->id) }}">FISPQ</a>
+                    <div align="right">
+                        <a href="{{ route('ficha', $registros->id) }}"><h5><strong>FICHA TÉCNICA</strong></h5></a>
+                        
+                        <a href="{{ route('fispq', $registros->id) }}"><h5><strong>FISPQ</strong><h5></a>
+                    </div>
                 </div>
 
                 <div class="col-sm">

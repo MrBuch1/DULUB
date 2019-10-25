@@ -15,22 +15,22 @@
         <div class="collapse navbar-collapse" id="barra-navegacao">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0 mr-5">
                 <li class="nav-item">
-                    <a class="nav-link" href="/" style="color:whitesmoke"><h4>Home</h4></a>
+                    <a class="nav-link" href="/" style="color:whitesmoke"><h5>Home</h5></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Empresa" style="color:whitesmoke"><h4>Empresa</h4></a>
+                    <a class="nav-link" href="/Empresa" style="color:whitesmoke"><h5>Empresa</h5></a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('noticias') }}" style="color:whitesmoke"><h4>Notícias</h4></a>
+                    <a class="nav-link" href="{{ route('noticias') }}" style="color:whitesmoke"><h5>Notícias</h5></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Regenesis" style="color:whitesmoke"><h4>Regenesis</h4></a>
+                    <a class="nav-link" href="/Regenesis" style="color:whitesmoke"><h5>Regenesis</h5></a>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:whitesmoke">
-                        <h4>Produtos</h4>
+                        <h5>Produtos</h5>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navDropdown">
                         <a href="{{ route('otto') }}" class="dropdown-item">Automotivo Ciclo OTTO</a>
@@ -42,7 +42,7 @@
                 
                 <li class="nav-item dropdown mr-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:whitesmoke">
-                        <h4>Relacionamento</h4>
+                        <h5>Relacionamento</h5>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navDropdown">
                         <a href="/Devolucao" class="dropdown-item">Devolução de Compra</a>

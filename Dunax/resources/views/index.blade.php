@@ -39,7 +39,7 @@
     </div>
 </section>
 
-<div class="container-fluid" style="background-color:#F5F5F5;">
+<div class="container-fluid" style="background-color:whitesmoke;">
     <section class="container">
         <div class="container">
             <div class="row">
@@ -57,12 +57,11 @@
                     <img src="images\Granistone.jpg" alt="" class="img-responsive d-block p-1">
                 </div>
 
-                <div class="col-sm" style="margin-top:50px; margin-bottom:100px;">
+                <div class="col-sm" style="margin-top:50px; margin-bottom:100px; background-color:white">
                     <h2 style="font-weight:bold; color:red; margin-top:20px">Últimas Notícias</h2>
                     <h4 class="text-sm-left"><strong><a href="{{ route('noticia.id', $noticia->id) }}" style="color:black">{{$noticia->titulo}}</a></strong></h4>
                         <br>
-                        {{$noticia->conteudo}}
-                        <img class="image-responsive ml-5" src="{{asset("storage/$noticia->imagem")}}" alt="" style="width:25%">
+                        <img class="image-responsive" src="{{asset("storage/$noticia->imagem")}}" alt="" style="width:75%">
                     </p>                   
                 </div>
             </div>

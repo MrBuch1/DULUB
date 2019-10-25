@@ -26,5 +26,9 @@ class CategoriasSeeder extends Seeder
         DB::table('categorias')->insert([
             'nome' => 'Transmissao'
         ]);
+
+        db::table('categorias')->insert([
+            'nome' => 'Hidraulicos'
+        ]);
     }
 }
