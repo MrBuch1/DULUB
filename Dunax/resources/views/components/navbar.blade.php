@@ -1,9 +1,37 @@
 @extends('layouts.app')
+
+<style>
+    
+    :root {
+    --mainColor: #EE0000;
+    }
+    
+    .hover-color {
+        background:
+            linear-gradient(
+              to bottom, var(--mainColor) 0%,
+              var(--mainColor) 100%
+            );
+        background-position: 0 100%;
+        background-repeat: repeat-x;
+        background-size: 0px 0px;
+        color: red;
+        text-decoration: none;
+        transition: background-size .2s;
+    }
+    
+    .hover-color:hover {
+      background-size: 4px 50px;
+    }
+
+</style>
+
+
 <!--Barra de navegação-->
 <div class="container-fluid">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark" style="background-color: #e3f2fd;">
         <a class="navbar-brand ml-5" href="/">                
-            <img class="img-responsive" src="{{asset('images/logo_dulub_100.png')}}" width="100px" class="img-responsive"
+            <img class="img-responsive" src="{{asset('images/logo_dulub_100.png')}}" width="75px" class="img-responsive"
             alt="">                
         </a>
 
@@ -14,23 +42,23 @@
         
         <div class="collapse navbar-collapse" id="barra-navegacao">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0 mr-5">
-                <li class="nav-item">
-                    <a class="nav-link" href="/" style="color:whitesmoke"><h5>Home</h5></a>
+                <li class="nav-item mx-1">
+                    <a class="nav-link hover-color" href="/" style="color:whitesmoke">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Empresa" style="color:whitesmoke"><h5>Empresa</h5></a>
+                <li class="nav-item mx-1">
+                    <a class="nav-link hover-color" href="/Empresa" style="color:whitesmoke">Empresa</a>
                 </li>
                 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('noticias') }}" style="color:whitesmoke"><h5>Notícias</h5></a>
+                <li class="nav-item mx-1">
+                    <a class="nav-link hover-color" href="{{ route('noticias') }}" style="color:whitesmoke">Notícias</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Regenesis" style="color:whitesmoke"><h5>Regenesis</h5></a>
+                <li class="nav-item mx-1">
+                    <a class="nav-link hover-color" href="/Regenesis" style="color:whitesmoke">Regenesis</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:whitesmoke">
-                        <h5>Produtos</h5>
+                <li class="nav-item dropdown mx-1">
+                    <a class="nav-link dropdown-toggle hover-color" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:whitesmoke">
+                        Produtos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navDropdown">
                         <a href="{{ route('otto') }}" class="dropdown-item">Automotivo Ciclo OTTO</a>
@@ -40,9 +68,9 @@
                     </div>                        
                 </li>
                 
-                <li class="nav-item dropdown mr-3">
-                    <a class="nav-link dropdown-toggle" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:whitesmoke">
-                        <h5>Relacionamento</h5>
+                <li class="nav-item dropdown mx-1">
+                    <a class="nav-link dropdown-toggle hover-color" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:whitesmoke">
+                        Relacionamento
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navDropdown">
                         <a href="/Devolucao" class="dropdown-item">Devolução de Compra</a>

@@ -2,9 +2,9 @@
 @component('components.navbar')@endcomponent
 
 <div class="container-fluid">
-    <img class="img-responsive container-fluid" src="images\imagem_oleo.jpg" alt="" style="margin-top:-300px; height:700px; filter:brightness(50%)">
+    <img class="img-responsive container-fluid" src="images\imagem_oleo_new.jpg" alt="" style="margin-top:-300px; height:700px; width:100%">
 
-    <div class="container" style="position:absolute; top:250px; left:350px;"><h1 style="color:whitesmoke; font-weight:bold;">A EMPRESA</h1></div>
+    <!-- <div class="container" style="position:absolute; top:250px; left:150px;"><h1 style="color:whitesmoke; font-weight:bold;">A EMPRESA</h1></div> -->
 </div>
 
 <div class="container mt-5">

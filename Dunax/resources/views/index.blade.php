@@ -59,9 +59,10 @@
 
                 <div class="col-sm" style="margin-top:50px; margin-bottom:100px; background-color:white">
                     <h2 style="font-weight:bold; color:red; margin-top:20px">Últimas Notícias</h2>
-                    <h4 class="text-sm-left"><strong><a href="{{ route('noticia.id', $noticia->id) }}" style="color:black">{{$noticia->titulo}}</a></strong></h4>
+                    <h4 class="text-sm-left"><strong><a href="{{ route('noticia.id', $noticia->id) }}" style="color:black">{{ $noticia->titulo }}</a></strong></h4>
+                    <p>{{ $noticia->created_at }}</p>
                         <br>
-                        <img class="image-responsive" src="{{asset("storage/$noticia->imagem")}}" alt="" style="width:75%">
+                        <img class="image-responsive" src="{{ asset("storage/$noticia->imagem") }}" alt="" style="width:75%">
                     </p>                   
                 </div>
             </div>

@@ -2,7 +2,7 @@
 @component('components.navbar')@endcomponent
 
 <div class="container-fluid">
-    <img class="image-responsive container-fluid mb-5" src="images\imagem_contato.jpg" alt="" style="margin-top:-250px; height:800px; filter:brightness(50%)">
+    <img class="img-fluid img-responsive container-fluid mb-5" src="images\imagem_contato_new.jpg" alt="" style="margin-top:-250px;">
 </div>
 
 <div class="container">
@@ -12,8 +12,8 @@
     </h3>
     
     <div class="container mt-5" align="center">
-        <a href="http://131.0.244.102:8015/workflow/wfportal.aspx?&inpRedirectURL=%252fworkflow%252fwftoday.aspx&inpLostSession=1" 
-        class="btn btn-outline-danger mb-5">CONTINUAR</a>
+        <a href="https://dulub.orquestrabpm.com.br/workflow/wfflow_execute_embed.aspx?c=FriVZ0JUHxmLhu%2foqrZQrRCHLWPQbteMedhbk3gCeCns%2fAfUPOQ13LwZoJj2QfWCn%2bydH8eMBW7YEghjUdLJHQ%3d%3d" 
+        class="btn btn-outline-danger mb-5" target="_blank">CONTINUAR</a>
     </div>
     
 </div>

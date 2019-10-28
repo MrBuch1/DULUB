@@ -2,10 +2,10 @@
 @component('components.navbar')@endcomponent
 
 <div class="container-fluid">
-    <img class="img-responsive container-fluid d-block" src="images\sustentabilidade.jpg" alt="" style="margin-top:-150px; height:700px; filter:brightness(50%); width:100%;">
+    <img class="img-responsive img-fluid d-block" src="images\sustentabilidade_new.jpg" alt="" style="margin-top:-200px; height:700px; width:100%;">
 
-    <div class="container" style="position:absolute; top:300px; right:-500px;"><h1 style="color:whitesmoke; font-weight:bold;">REGENESIS</h1></div>
-    <div class="container" style="position:absolute; top:350px; right:-410px;"><h4 style="color:whitesmoke;">Juntos por um planeta melhor.</h4></div>
+    <!-- <div class="container" style="position:absolute; top:300px; left:800px;"><h1 style="color:whitesmoke; font-weight:bold;">REGENESIS</h1></div>
+    <div class="container" style="position:absolute; top:350px; left:800px;"><h4 style="color:whitesmoke;">Juntos por um planeta melhor.</h4></div> -->
 </div>
 
 <div class="container mt-5 mb-5">

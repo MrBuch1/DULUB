@@ -21,8 +21,8 @@
         justify-content: center;
       }
       .slider{
-        height: 50px;
-        padding-left:15px;
+        height: 70px;
+        padding-left: 15px;
         overflow: hidden;
       }
       .slider div {
@@ -96,19 +96,25 @@
                     <div class="container">
                         <div class="slider-wrapper left" style="position:absolute; bottom:150px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text1">Linha Automotiva</div>
+                                <div class="slider-text1">Novo sistema de</div>
+                            </div>
+                        </div>
+
+                        <div class="slider-wrapper left" style="position:absolute; bottom:100px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
+                            <div class="slider" style="margin-bottom:100px">
+                                <div class="slider-text1">Devoluções</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text2">Mais proteção e performance</div>
+                                <div class="slider-text2">Ficou ainda mais fácil devolver sua compra</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:-20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text3"><a class="btn btn-danger" href="{{ route('otto') }}">SAIBA MAIS</a></div>
+                                <div class="slider-text3"><a class="btn btn-danger" href="/Devolucao">SAIBA MAIS</a></div>
                             </div>
                         </div>
                     </div>
@@ -124,19 +130,19 @@
                     <div class="container">
                         <div class="slider-wrapper left" style="position:absolute; bottom:150px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text1">Linha Automotiva</div>
+                                <div class="slider-text1">Linha Motocicletas</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text2">Mais proteção e performance</div>
+                                <div class="slider-text2">Até nas condições mais radicais</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:-20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text3"><a class="btn btn-danger" href="{{ route('otto') }}">SAIBA MAIS</a></div>
+                                <div class="slider-text3"><a class="btn btn-danger" href="{{ route('motos') }}">SAIBA MAIS</a></div>
                             </div>
                         </div>
                     </div>
@@ -152,19 +158,19 @@
                     <div class="container">
                         <div class="slider-wrapper left" style="position:absolute; bottom:150px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text1">Linha Automotiva</div>
+                                <div class="slider-text1">Fluidos para freios</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text2">Mais proteção e performance</div>
+                                <div class="slider-text2">Qualidade e segurança</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:-20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text3"><a class="btn btn-danger" href="{{ route('otto') }}">SAIBA MAIS</a></div>
+                                <div class="slider-text3"><a class="btn btn-danger" href="#">SAIBA MAIS</a></div>
                             </div>
                         </div>
                     </div>
@@ -180,19 +186,19 @@
                     <div class="container">
                         <div class="slider-wrapper left" style="position:absolute; bottom:150px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text1">Linha Automotiva</div>
+                                <div class="slider-text1">Arla 32</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text2">Mais proteção e performance</div>
+                                <div class="slider-text2">Proteção e respeito à Natureza</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:-20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text3"><a class="btn btn-danger" href="{{ route('otto') }}">SAIBA MAIS</a></div>
+                                <div class="slider-text3"><a class="btn btn-danger" href="#">SAIBA MAIS</a></div>
                             </div>
                         </div>
                     </div>
@@ -208,19 +214,25 @@
                     <div class="container">
                         <div class="slider-wrapper left" style="position:absolute; bottom:150px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text1">Linha Automotiva</div>
+                                <div class="slider-text1">Preservar o</div>
+                            </div>
+                        </div>
+
+                        <div class="slider-wrapper left" style="position:absolute; bottom:100px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
+                            <div class="slider" style="margin-bottom:100px">
+                                <div class="slider-text1">Meio Ambiente</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text2">Mais proteção e performance</div>
+                                <div class="slider-text2">Regenesis - Um compromisso de todos</div>
                             </div>
                         </div>
 
                         <div class="slider-wrapper left" style="position:absolute; bottom:-20px; left:150px; color:whitesmoke; font-weight:bold; font-family:Arial, Helvetica, sans-serif">
                             <div class="slider" style="margin-bottom:100px">
-                                <div class="slider-text3"><a class="btn btn-danger" href="{{ route('otto') }}">SAIBA MAIS</a></div>
+                                <div class="slider-text3"><a class="btn btn-danger" href="/Regenesis">SAIBA MAIS</a></div>
                             </div>
                         </div>
                     </div>
@@ -231,11 +243,11 @@
                     </div>
                 </div>
 
-                <a class="carousel-control-prev" href="#carouselSite" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselSite" role="button" data-slide="prev" style="width:100px">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Voltar</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselSite" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselSite" role="button" data-slide="next" style="width:100px">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Avançar</span>
                 </a>

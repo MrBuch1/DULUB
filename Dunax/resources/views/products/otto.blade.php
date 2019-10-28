@@ -2,7 +2,7 @@
 @component('components.navbar')@endcomponent
 
 <div class="container-fluid">
-    <img class="img-responsive container-fluid mb-5" src="..\images\wallpaper-otto.jpg" alt="" style="margin-top:-125px; filter:brightness(50%);">
+    <img class="img-responsive img-fluid container-fluid mb-5" src="..\images\wallpaper-otto.jpg" alt="" style="margin-top:-85px; filter:brightness(50%);">
 </div>
 
 <div class="container">

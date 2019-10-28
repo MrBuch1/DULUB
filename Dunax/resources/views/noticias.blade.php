@@ -8,7 +8,8 @@
 <div class="container mt-5">
     @foreach ($noticia as $n)
         <a href="{{ route('noticia.id', $n->id) }}" style="color:black"><h3><strong>{{ $n->titulo }}</strong></h3></a>
-        <img class="image-responsive" src="{{ asset("storage/$n->imagem") }}" alt="" style="width:30%">
+        <p>{{ $n->created_at }}</p>
+        <img class="image-responsive mb-5" src="{{ asset("storage/$n->imagem") }}" alt="" style="width:30%">
     @endforeach
     <h1></h1>
 </div>

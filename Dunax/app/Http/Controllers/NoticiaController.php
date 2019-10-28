@@ -26,7 +26,7 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-        return view('noticias_new');
+        return view('noticias.noticias_new');
     }
 
     /**
@@ -50,6 +50,9 @@ class NoticiaController extends Controller
         $path              = $request->file('imagem')->store('images/Noticias', 'public');
         $noticia->imagem   = $path;
 
+        date_default_timezone_set('America/Sao_Paulo');
+        $noticia->created_at = date("Y-m-d H:i:s");
+
         $noticia->save();
 
         return redirect()->route('noticias');
@@ -72,7 +75,7 @@ class NoticiaController extends Controller
                 $noticia = Noticia::find($id);
                 $array = explode('</br>', $noticia->descricao);
 
-                return view('noticia', compact('noticia', 'array'));
+                return view('noticias.noticia', compact('noticia', 'array'));
 
             }
         }

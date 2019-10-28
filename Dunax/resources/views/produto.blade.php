@@ -35,7 +35,7 @@
                     <hr><br>
                     <h4><strong>{{ $registros->uso }}</strong></h4>
                     <h5>{{ $registros->descricao }}</h5>
-                    <div align="right">
+                    <div class="mt-5" align="right">
                         <a href="{{ route('ficha', $registros->id) }}"><h5><strong>FICHA TÉCNICA</strong></h5></a>
                         
                         <a href="{{ route('fispq', $registros->id) }}"><h5><strong>FISPQ</strong><h5></a>

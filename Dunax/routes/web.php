@@ -36,6 +36,6 @@ Route::get('/index', 'ProdutoController@index');
 
 # Noticias
 Route::get('/Noticias', 'NoticiaController@index')->name('noticias');
-Route::get('/Noticias/New', 'NoticiaController@create')->name('noticias.new');
+Route::get('/Noticias/New', 'NoticiaController@create')->name('noticias.new')->middleware('auth');
 Route::get('/Noticias/{id}', 'NoticiaController@show')->name('noticia.id');
 Route::post('/Noticias', 'NoticiaController@store');
