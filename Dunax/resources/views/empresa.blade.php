@@ -1,8 +1,52 @@
 @extends('layouts.app')
+@section('content')
+
 @component('components.navbar')@endcomponent
 
-<div class="container-fluid">
-    <img class="img-responsive container-fluid" src="images\imagem_oleo_new.jpg" alt="" style="margin-top:-300px; height:700px; width:100%">
+<style>
+    .animated {
+       background-repeat: no-repeat;
+       background-position: left top;
+       margin-bottom:60px;
+       -webkit-animation-duration: 5s;
+       animation-duration: 5s;
+       -webkit-animation-fill-mode: both;
+       animation-fill-mode: both;
+    }
+    
+    @-webkit-keyframes fadeIn {
+       0% {opacity: 0;}
+       100% {opacity: 1;}
+    }
+    
+    @keyframes fadeIn {
+       0% {opacity: 0;}
+       100% {opacity: 1;}
+    }
+    
+    @-webkit-keyframes fadeOut {
+       100% {opacity: 1;}
+       0% {opacity: 0;}
+    }
+    
+    @keyframes fadeOut {
+       100% {opacity: 1;}
+       0% {opacity: 0;}
+    }
+    
+    .fadeIn {
+       -webkit-animation-name: fadeIn;
+       animation-name: fadeIn;
+    }
+    
+    .fadeOut {
+       -webkit-animation-name: fadeOut;
+       animation-name: fadeOut;
+    }
+ </style>
+
+<div class="container-narrow">
+    <img class="img-responsive img-fluid shadow-lg" src="images\imagem_oleo_new.jpg" alt="" style="margin-top:-550px; width:100%">
 
     <!-- <div class="container" style="position:absolute; top:250px; left:150px;"><h1 style="color:whitesmoke; font-weight:bold;">A EMPRESA</h1></div> -->
 </div>
@@ -30,7 +74,7 @@
         promovendo o trabalho, o respeito e confiança dos nossos fornecedores, colaboradores e clientes.
     </p>
 
-    <div class="container mt-5">
+    <div class="container mt-5 animated fadeIn fadeOut">
         <hr>
         <img class="img-responsive center d-block" src="images\logos-empresa.png" alt="" style="margin-left:auto; margin-right:auto">
         <hr>
@@ -105,7 +149,7 @@
     </section>
 </div>
 
-<div class="container mt-5">
+<!-- <div class="container mt-5">
     <h2 style="text-decoration:underline; margin-top:150px"><strong>UNIDADE 02 – ITAITINGA/CE</strong></h2>
     <h4>DULUB LUBRIFICANTES LTDA<br>
         CNPJ: 04.382.181/0001-19<br>
@@ -149,6 +193,8 @@
             </div>
         </div>
     </section>
-</div>
+</div> -->
 
 @component('components.rodape')@endcomponent
+    
+@endsection

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('content')
 @component('components.navbar')@endcomponent
 
 <div class="container" style="margin-top:200px">
@@ -18,7 +19,10 @@
         <br>
         <input type="file" class="form-control-file" name="imagem">
         <br><br>
-        <button class="btn btn-outline-primary" type="submit">ENVIAR</button>
-        <a class="btn btn-outline-danger ml-3" href="/">CANCELAR</a>
+        <button class="btn btn-outline-primary mr-3 mb-5" type="submit">ENVIAR</button>
+        <a class="btn btn-outline-danger mr-3 mb-5" href="/">CANCELAR</a>
     </form>
 </div>
+
+@component('components.rodape')@endcomponent
+@endsection

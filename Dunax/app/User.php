@@ -19,6 +19,18 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function formkms() {
+        return $this->hasMany('App\Formkm');
+    }
+
+    public function formdespesas() {
+        return $this->hasMany('App\Formdespesas');
+    }
+
+    public function documentos() {
+        return $this->hasMany('App\Documentos');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

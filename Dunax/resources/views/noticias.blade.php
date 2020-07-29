@@ -1,7 +1,8 @@
 @extends('layouts.app')
+@section('content')
 @component('components.navbar')@endcomponent
 
-<div class="container" style="margin-top:200px" align="center">
+<div class="container mt-5" align="center">
     <h1 class="display-1"><strong>NOTÍCIAS</strong></h1>
 </div>
 
@@ -13,3 +14,6 @@
     @endforeach
     <h1></h1>
 </div>
+
+@component('components.rodape')@endcomponent
+@endsection

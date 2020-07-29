@@ -18,6 +18,8 @@ class CreateProdutosTable extends Migration
             $table->string('nome');
             $table->string('uso');
             $table->longText('descricao');
+            $table->longText('comp_quimica')->nullable();
+            $table->string('familia')->nullable();
             //$table->float('valor');
             $table->string('ficha')->nullable();
             $table->string('fispq')->nullable();

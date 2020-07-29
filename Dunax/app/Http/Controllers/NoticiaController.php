@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Noticia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Storage;
 
 class NoticiaController extends Controller
 {
@@ -16,7 +17,8 @@ class NoticiaController extends Controller
     public function index()
     {
         $noticia = DB::table('noticias')->get();
-        return view('noticias', compact('noticia'));
+
+        return view('noticias', compact('noticia', 'items'));
     }
 
     /**

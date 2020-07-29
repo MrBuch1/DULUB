@@ -165,8 +165,11 @@ class ProdutoController extends Controller
         $registros = Produto::where([
             'categoria_id' => 1
         ])->get();
+        $supreme = Produto::where([
+            'categoria_id' => 17
+        ])->get();
 
-        return view('products.otto', compact('registros'));
+        return view('products.otto', compact('registros', 'supreme'));
     }
 
     public function diesel()
@@ -194,6 +197,119 @@ class ProdutoController extends Controller
         ])->get();
 
         return view('products.transmissao', compact('registros'));
+    }
+
+    public function engrenagens()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 5
+        ])->get();
+
+        return view('products.engrenagens', compact('registros'));
+    }
+
+    public function industrial()
+    {
+        return view('products.industrial');
+    }
+
+    public function graxas()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 6
+        ])->get();
+
+        return view('products.graxas', compact('registros'));
+    }
+
+    public function arla()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 7
+        ])->get();
+
+        return view('products.arla32', compact('registros'));
+    }
+
+    public function equipamentos()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 8
+        ])->get();
+
+        return view('products.equipamentos', compact('registros'));
+    }
+
+    public function hidraulicos()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 9
+        ])->get();
+
+        return view('products.industriais.hidraulicos', compact('registros'));
+    }
+
+    public function refrigeracao()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 10
+        ])->get();
+
+        return view('products.industriais.refrigeracao', compact('registros'));
+    }
+
+    public function compressores()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 11
+        ])->get();
+
+        return view('products.industriais.compressores', compact('registros'));
+    }
+
+    public function engrenagens_industriais()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 12
+        ])->get();
+
+        return view('products.industriais.engrenagens_ind', compact('registros'));
+    }
+
+    public function termicos()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 13
+        ])->get();
+
+        return view('products.industriais.termicos', compact('registros'));
+    }
+
+    public function desmoldantes()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 14
+        ])->get();
+
+        return view('products.industriais.desmoldantes', compact('registros'));
+    }
+
+    public function textil()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 15
+        ])->get();
+
+        return view('products.industriais.textil', compact('registros'));
+    }
+
+    public function transformadores()
+    {
+        $registros = Produto::where([
+            'categoria_id' => 16
+        ])->get();
+
+        return view('products.industriais.transformadores', compact('registros'));
     }
 
 }

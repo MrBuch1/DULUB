@@ -1,0 +1,9 @@
+1 - Tela de agente cobrador / tipo de cobrança
+	*Juntar os nomes repetidos - feito vsf
+
+2 - Tela de 2a etapa
+	*Empresa 45 precisa ter finalidade 15 também - feito
+
+3 - Tela final de pedido
+	*Mostrar razão social, cnpj, produto, quantidade, valor unitario,
+	valor total de cada produto, valor total do pedido

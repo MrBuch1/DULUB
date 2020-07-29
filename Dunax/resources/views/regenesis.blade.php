@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @component('components.navbar')@endcomponent
 
-<div class="container-fluid">
+<div class="container-narrow">
     <img class="img-responsive img-fluid d-block" src="images\sustentabilidade_new.jpg" alt="" style="margin-top:-200px; height:700px; width:100%;">
 
     <!-- <div class="container" style="position:absolute; top:300px; left:800px;"><h1 style="color:whitesmoke; font-weight:bold;">REGENESIS</h1></div>

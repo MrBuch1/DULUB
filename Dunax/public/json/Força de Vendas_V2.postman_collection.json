@@ -1,0 +1,1837 @@
+{
+	"info": {
+		"_postman_id": "54a1c5ee-a679-4dbe-8a7e-52624450404a",
+		"name": "Força de Vendas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pessoas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"email\": \"pedidos.site@dulub.com.br\",\n\t\"senha\": \"dulub963\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/auth/api/pessoas/entrar?identificadorDaAplicacao=ForcaDeVendas&chaveDaAplicacaoExterna=2awwG8Tqp12sJtzQcyYIzVrYfQNmMg0crxWq8ohNQMlQU4cU5lvO1Y%2FGNN0hbkAD0JNPPQz3489u8paqUO3jOg%3D%3D",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"auth",
+						"api",
+						"pessoas",
+						"entrar"
+					],
+					"query": [
+						{
+							"key": "identificadorDaAplicacao",
+							"value": "ForcaDeVendas"
+						},
+						{
+							"key": "chaveDaAplicacaoExterna",
+							"value": "2awwG8Tqp12sJtzQcyYIzVrYfQNmMg0crxWq8ohNQMlQU4cU5lvO1Y%2FGNN0hbkAD0JNPPQz3489u8paqUO3jOg%3D%3D"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logon",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"pedidos.site@dulub.com.br\",\n    \"senha\": \"dulub963\",\n    \"usuarioID\": 12307\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/auth/api/usuarios/entrar?identificadorDaAplicacao=ForcaDeVendas&chaveDaAplicacaoExterna=2awwG8Tqp12sJtzQcyYIzVrYfQNmMg0crxWq8ohNQMlQU4cU5lvO1Y%2FGNN0hbkAD0JNPPQz3489u8paqUO3jOg%3D%3D&enderecoDeRetorno=http://qualquer",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"auth",
+						"api",
+						"usuarios",
+						"entrar"
+					],
+					"query": [
+						{
+							"key": "identificadorDaAplicacao",
+							"value": "ForcaDeVendas"
+						},
+						{
+							"key": "chaveDaAplicacaoExterna",
+							"value": "2awwG8Tqp12sJtzQcyYIzVrYfQNmMg0crxWq8ohNQMlQU4cU5lvO1Y%2FGNN0hbkAD0JNPPQz3489u8paqUO3jOg%3D%3D"
+						},
+						{
+							"key": "enderecoDeRetorno",
+							"value": "http://qualquer"
+						}
+					]
+				},
+				"description": "Postman para efeturar o Logon na integração do Site Perseus"
+			},
+			"response": []
+		},
+		{
+			"name": "Incluir Pedido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"pedidoID\": 0,\r\n        \"data\": \"2020-06-01T00:00:00\",\r\n        \"empresaID\": 64,\r\n        \"operacaoID\": 164,\r\n        \"tipoDeDocumentoID\": 31,\r\n        \"tipoDeDocumentoPedidoID\": 8,\r\n        \"cliente\": {\r\n            \"id\": 30828,\r\n            \"razaoSocial\": \"Elissando Pinto de Souza Moto Pecas\",\r\n            \"nomeFantasia\": \"Chegado Moto Pecas\",\r\n            \"cnpJouCPF\": 32723281000105.0,\r\n            \"inscricaoEstadual\": \"247932876\",\r\n            \"enderecoFaturamento\": {\r\n                \"uf\": \"AL\",\r\n                \"cidade\": \"São José da Tapera\",\r\n                \"bairro\": \"Centro\",\r\n                \"tipoDeLogradouro\": \"R\",\r\n                \"logradouro\": \"07 de Setembro\",\r\n                \"numero\": \"99\",\r\n                \"complemento\": \"SC\",\r\n                \"cep\": \"57445000\"\r\n            },\r\n            \"telefone1\": \"-\",\r\n            \"celular1\": \"-91916030\",\r\n            \"dataInclusao\": \"2019-04-18T00:00:00\"\r\n        },\r\n        \"vendedorID\": 3633,\r\n        \"turnoID\": 5,\r\n        \"moedaID\": 1,\r\n        \"entrega\": \"2020-06-01T00:00:00\",\r\n        \"enderecoEntrega\": {\r\n            \"uf\": \"AL\",\r\n            \"cidade\": \"São José da Tapera\",\r\n            \"bairro\": \"Centro\",\r\n            \"tipoDeLogradouro\": \"R\",\r\n            \"logradouro\": \"07 de Setembro\",\r\n            \"numero\": \"99\",\r\n            \"complemento\": \"SC\",\r\n            \"cep\": \"57445000\"\r\n        },\r\n        \"tipoDeFrete\": 10,\r\n        \"itens\": [\r\n            {\r\n                \"itemPedidoID\": 0,\r\n                \"objetoID\": 4009,\r\n                \"finalidadeID\": 2,\r\n                \"centroDeCustosID\": 4,\r\n                \"atividadeID\": 446,\r\n                \"unidadeDeMedidaID\": 8,\r\n                \"quantidade\": 6.000000,\r\n                \"valorMercadoria\": 1230.000000\r\n            },\r\n            {\r\n                \"itemPedidoID\": 0,\r\n                \"objetoID\": 5941,\r\n                \"finalidadeID\": 2,\r\n                \"centroDeCustosID\": 4,\r\n                \"atividadeID\": 446,\r\n                \"unidadeDeMedidaID\": 8,\r\n                \"quantidade\": 1.000000,\r\n                \"valorMercadoria\": 128.000000\r\n            },\r\n            {\r\n                \"itemPedidoID\": 0,\r\n                \"objetoID\": 5939,\r\n                \"finalidadeID\": 2,\r\n                \"centroDeCustosID\": 4,\r\n                \"atividadeID\": 446,\r\n                \"unidadeDeMedidaID\": 8,\r\n                \"quantidade\": 1.000000,\r\n                \"valorMercadoria\": 128.000000\r\n            },\r\n            {\r\n                \"itemPedidoID\": 0,\r\n                \"objetoID\": 131,\r\n                \"finalidadeID\": 2,\r\n                \"centroDeCustosID\": 4,\r\n                \"atividadeID\": 446,\r\n                \"unidadeDeMedidaID\": 14,\r\n                \"quantidade\": 1.000000,\r\n                \"valorMercadoria\": 135.000000\r\n            }\r\n        ],\r\n        \"agenteCobradorID\": 64,\r\n        \"tipodeCobrancaID\": 13,\r\n        \"formaDePagamentoID\": 166\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/pedido/incluir",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"pedido",
+						"incluir"
+					],
+					"query": [
+						{
+							"key": "clienteID",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "Postman para efeturar o Logon na integração do Site Perseus"
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Agente Cobrador",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/agentecobrador/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"agentecobrador",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Atividade",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/atividade/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"atividade",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Centro de Custos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/centrodecusto/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"centrodecusto",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Cliente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"cliente",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Comissão",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/comissao/consultar?vendedorID=4010&dataInicial=2020-01-01T00:00:00.000&dataFinal=2020-04-20T00:00:00.000",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"comissao",
+						"consultar"
+					],
+					"query": [
+						{
+							"key": "vendedorID",
+							"value": "4010"
+						},
+						{
+							"key": "dataInicial",
+							"value": "2020-01-01T00:00:00.000"
+						},
+						{
+							"key": "dataFinal",
+							"value": "2020-04-20T00:00:00.000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Contas a Receber",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/contasareceber/consultar?vendedorID=4010",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"contasareceber",
+						"consultar"
+					],
+					"query": [
+						{
+							"key": "vendedorID",
+							"value": "4010"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Empresa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/empresa/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"empresa",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Estoque",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/lancamentodeestoque/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"lancamentodeestoque",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Faturamento",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/faturamento/consultar?vendedorID=4010&dataInicial=2020-05-29T00:00:00.000&dataFinal=2020-05-29T00:00:00.000",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"faturamento",
+						"consultar"
+					],
+					"query": [
+						{
+							"key": "vendedorID",
+							"value": "4010"
+						},
+						{
+							"key": "dataInicial",
+							"value": "2020-05-29T00:00:00.000"
+						},
+						{
+							"key": "dataFinal",
+							"value": "2020-05-29T00:00:00.000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Finalidade",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/finalidade/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"finalidade",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Forma de Pagamento",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/formadepagamento/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"formadepagamento",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Pedidos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/itemdopedido/consultar?vendedorID=3633&dataInicial=2020-05-27T00:00:00.000&dataFinal=2020-05-27T00:00:00.000",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"itemdopedido",
+						"consultar"
+					],
+					"query": [
+						{
+							"key": "vendedorID",
+							"value": "3633"
+						},
+						{
+							"key": "dataInicial",
+							"value": "2020-05-27T00:00:00.000"
+						},
+						{
+							"key": "dataFinal",
+							"value": "2020-05-27T00:00:00.000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Pedidos Pendente de Embarque",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/itemdopedido/pendentedeembarque?vendedorID=4010&dataInicial=2020-05-20T00:00:00.000&dataFinal=2020-06-30T00:00:00.000",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"itemdopedido",
+						"pendentedeembarque"
+					],
+					"query": [
+						{
+							"key": "vendedorID",
+							"value": "4010"
+						},
+						{
+							"key": "dataInicial",
+							"value": "2020-05-20T00:00:00.000"
+						},
+						{
+							"key": "dataFinal",
+							"value": "2020-06-30T00:00:00.000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Pedidos Embarcado Pendente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/itemdopedido/embarcadopendente?vendedorID=10258&dataInicial=2020-05-01T00:00:00.000&dataFinal=2020-05-30T00:00:00.000",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"itemdopedido",
+						"embarcadopendente"
+					],
+					"query": [
+						{
+							"key": "vendedorID",
+							"value": "10258"
+						},
+						{
+							"key": "dataInicial",
+							"value": "2020-05-01T00:00:00.000"
+						},
+						{
+							"key": "dataFinal",
+							"value": "2020-05-30T00:00:00.000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar País",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/localizacao/consultarpais",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"localizacao",
+						"consultarpais"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Estado",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/localizacao/consultarestado?siglaPais=BR",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"localizacao",
+						"consultarestado"
+					],
+					"query": [
+						{
+							"key": "siglaPais",
+							"value": "BR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Cidade",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/localizacao/consultarcidade?siglaEstado=CE",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"localizacao",
+						"consultarcidade"
+					],
+					"query": [
+						{
+							"key": "siglaEstado",
+							"value": "CE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Bairro",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/localizacao/consultarbairro?cidadeID=1968",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"localizacao",
+						"consultarbairro"
+					],
+					"query": [
+						{
+							"key": "cidadeID",
+							"value": "1968"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Mercadoria",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/mercadoria/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"mercadoria",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Moeda",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/moeda/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"moeda",
+						"consultar"
+					],
+					"query": [
+						{
+							"key": "dataInicial",
+							"value": "2020-02-01T00:00:00.000",
+							"disabled": true
+						},
+						{
+							"key": "dataFinal",
+							"value": "2020-02-27T00:00:00.000",
+							"disabled": true
+						},
+						{
+							"key": "clienteID",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Política de Cobrança",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/detalhepoliticadecobranca/filtrocobranca?clienteID=33458",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"detalhepoliticadecobranca",
+						"filtrocobranca"
+					],
+					"query": [
+						{
+							"key": "clienteID",
+							"value": "33458"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Tabela de Preços",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/objetododetalhedapoliticadeprecos/consultartabeladeprecos?clienteID=92&objetoID=2980",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"objetododetalhedapoliticadeprecos",
+						"consultartabeladeprecos"
+					],
+					"query": [
+						{
+							"key": "clienteID",
+							"value": "92"
+						},
+						{
+							"key": "objetoID",
+							"value": "2980"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Tipo de Cobrança",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodecobranca/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"tipodecobranca",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Tipo de Documento",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodedocumento/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"tipodedocumento",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Tipo de Logradouro",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YzhlY2FlMTdmMjQxNTJhOTZjNGZkNWMxNzE5NGNhIiwidHlwIjoiSldUIn0.eyJzdWIiOiIxMjMwNyIsInVuaXF1ZV9uYW1lIjoiMTIzMDciLCJpYXQiOjE1OTA3NzAyNzEsImp0aSI6IjI5MTMzZWVhNDM4YzQ3MjVhMWVhZWE5YmVlMmViNDhmIiwiU2l0ZSI6IkR1bmF4IiwiQXBsaWNhY2FvIjoiRm9yY2FEZVZlbmRhcyIsIkNvbmV4YW8iOiJBVVRIXzEyMzA3X2FhMjViNmVmODM4MzRlNTA4MDIyYWM3YzNkZTIyMDA2IiwiR3J1cG9EZVdlYlNlcnZpY2UiOlsiX2d3QWdlbnRlQ29icmFkb3JGb3JjYURlVmVuZGFzOmZvcmNhZGV2ZW5kYXMvYWdlbnRlY29icmFkb3I6MiIsIl9nd0F0aXZpZGFkZUZvcmNhRGVWZW5kYXM6Zm9yY2FkZXZlbmRhcy9hdGl2aWRhZGU6MiIsIl9nd0NlbnRyb0RlQ3VzdG9Gb3JjYURlVmVuZGFzOmZvcmNhZGV2ZW5kYXMvY2VudHJvZGVjdXN0bzoyIiwiX2d3Q2xpZW50ZUZvcmNhRGVWZW5kYXM6Zm9yY2FkZXZlbmRhcy9jbGllbnRlOjIiLCJfZ3dDb21pc3PDo29Gb3JjYURlVmVuZGFzOmZvcmNhZGV2ZW5kYXMvY29taXNzYW86MiIsIl9nd0NvbnRhc0FSZWNlYmVyRm9yY2FEZVZlbmRhczpmb3JjYWRldmVuZGFzL2NvbnRhc2FyZWNlYmVyOjIiLCJfZ3dFbXByZXNhRm9yY2FEZVZlbmRhczpmb3JjYWRldmVuZGFzL2VtcHJlc2E6MiIsIl9nd0VzdG9xdWVGb3JjYURlVmVuZGFzOmZvcmNhZGV2ZW5kYXMvbGFuY2FtZW50b2RlZXN0b3F1ZToyIiwiX2d3RmF0dXJhbWVudG9Gb3JjYURlVmVuZGFzOmZvcmNhZGV2ZW5kYXMvZmF0dXJhbWVudG86MiIsIl9nd0ZpbmFsaWRhZGVGb3JjYURlVmVuZGFzOmZvcmNhZGV2ZW5kYXMvZmluYWxpZGFkZToyIiwiX2d3Rm9ybWFEZVBhZ2FtZW50b0ZvcmNhRGVWZW5kYXM6Zm9yY2FkZXZlbmRhcy9mb3JtYWRlcGFnYW1lbnRvOjIiLCJfZ3dJdGVtRG9QZWRpZG9Gb3JjYURlVmVuZGFzOmZvcmNhZGV2ZW5kYXMvaXRlbWRvcGVkaWRvOjIiLCJfZ3dMb2NhbGl6YWNhb0ZvcmNhRGVWZW5kYXM6Zm9yY2FkZXZlbmRhcy9sb2NhbGl6YWNhbzoyIiwiX2d3TWVyY2Fkb3JpYUZvcmNhRGVWZW5kYXM6Zm9yY2FkZXZlbmRhcy9tZXJjYWRvcmlhOjIiLCJfZ3dNb2VkYUZvcmNhRGVWZW5kYXM6Zm9yY2FkZXZlbmRhcy9tb2VkYToyIiwiX2d3UGVkaWRvRm9yY2FEZVZlbmRhczpmb3JjYWRldmVuZGFzL3BlZGlkbzoyIiwiX2d3UG9saXRpY2FEZUNvYnJhbmNhRm9yY2FEZVZlbmRhczpmb3JjYWRldmVuZGFzL2RldGFsaGVwb2xpdGljYWRlY29icmFuY2E6MiIsIl9nd1BvbGl0aWNhRGVQcmVjb0ZvcmNhRGVWZW5kYXM6Zm9yY2FkZXZlbmRhcy9vYmpldG9kb2RldGFsaGVkYXBvbGl0aWNhZGVwcmVjb3M6MiIsIl9nd1RpcG9EZUNvYnJhbmNhRm9yY2FEZVZlbmRhczpmb3JjYWRldmVuZGFzL3RpcG9kZWNvYnJhbmNhOjIiLCJfZ3dUaXBvRGVEb2N1bWVudG9Gb3JjYURlVmVuZGFzOmZvcmNhZGV2ZW5kYXMvdGlwb2RlZG9jdW1lbnRvOjIiLCJfZ3dUaXBvRGVPcGVyYWNhb0ZvcmNhRGVWZW5kYXM6Zm9yY2FkZXZlbmRhcy90aXBvZGVvcGVyYWNhbzoyIiwiX2d3VHVybm9Gb3JjYURlVmVuZGFzOmZvcmNhZGV2ZW5kYXMvdHVybm86MiIsIl9nd1VuaWRhZGVEZU1lZGlkYUZvcmNhRGVWZW5kYXM6Zm9yY2FkZXZlbmRhcy91bmlkYWRlZGVtZWRpZGE6MiIsIl9nd1ZlbmRlZG9yRm9yY2FEZVZlbmRhczpmb3JjYWRldmVuZGFzL3ZlbmRlZG9yOjIiXSwiV2ViU2VydmljZSI6WyJfd3NDb25zdWx0YXJBZ2VudGVDb2JyYWRvcjpjb25zdWx0YXI6MiIsIl93c0NvbnN1bHRhckF0aXZpZGFkZTpjb25zdWx0YXI6MiIsIl93c0NvbnN1bHRhckNlbnRyb0RlQ3VzdG9zOmNvbnN1bHRhcjoyIiwiX3dzQ29uc3VsdGFyQ2xpZW50ZXM6Y29uc3VsdGFyOjIiLCJfd3NDb25zdWx0YXJDb21pc3NvZXM6Y29uc3VsdGFyOjIiLCJfd3NDb25zdWx0YXJDb250YXNBUmVjZWJlcjpjb25zdWx0YXI6MiIsIl93c0NvbnN1bHRhckVtcHJlc2E6Y29uc3VsdGFyOjIiLCJfd3NDb25zdWx0YXJFc3RvcXVlOmNvbnN1bHRhcjoyIiwiX3dzQ29uc3VsdGFyRmF0dXJhbWVudG86Y29uc3VsdGFyOjIiLCJfd3NDb25zdWx0YXJGaW5hbGlkYWRlOmNvbnN1bHRhcjoyIiwiX3dzQ29uc3VsdGFyRm9ybWFEZVBhZ2FtZW50bzpjb25zdWx0YXI6MiIsIl93c0NvbnN1bHRhclBlZGlkb3M6Y29uc3VsdGFyOjIiLCJfd3NDb25zdWx0YXJQZWRpZG9zUGVuZGVudGVEZUVtYmFycXVlOnBlbmRlbnRlZGVlbWJhcnF1ZToyIiwiX3dzQ29uc3VsdGFyUGVkaWRvc0VtYmFyY2Fkb1BlbmRlbnRlOmVtYmFyY2Fkb3BlbmRlbnRlOjIiLCJfd3NDb25zdWx0YXJQYWlzOmNvbnN1bHRhcnBhaXM6MiIsIl93c0NvbnN1bHRhckVzdGFkbzpjb25zdWx0YXJlc3RhZG86MiIsIl93c0NvbnN1bHRhckNpZGFkZTpjb25zdWx0YXJjaWRhZGU6MiIsIl93c0NvbnN1bHRhckJhaXJybzpjb25zdWx0YXJiYWlycm86MiIsIl93c0NvbnN1bHRhck1lcmNhZG9yaWE6Y29uc3VsdGFyOjIiLCJfd3NDb25zdWx0YXJNb2VkYTpjb25zdWx0YXI6MiIsIl93c0luY2x1aXJQZWRpZG86aW5jbHVpcjoyIiwiX3dzQ29uc3VsdGFyRmlsdHJvQ29icmFuY2E6ZmlsdHJvY29icmFuY2E6MiIsIl93c0NvbnN1bHRhclRhYmVsYURlUHJlY29zOmNvbnN1bHRhcnRhYmVsYWRlcHJlY29zOjIiLCJfd3NDb25zdWx0YXJUaXBvRGVDb2JyYW5jYTpjb25zdWx0YXI6MiIsIl93c0NvbnN1bHRhclRpcG9EZURvY3VtZW50bzpjb25zdWx0YXI6MiIsIl93c0NvbnN1bHRhclRpcG9EZU9wZXJhY2FvOmNvbnN1bHRhcjoyIiwiX3dzQ29uc3VsdGFyVHVybm86Y29uc3VsdGFyOjIiLCJfd3NDb25zdWx0YXJVbmlkYWRlRGVNZWRpZGE6Y29uc3VsdGFyOjIiLCJfd3NDb25zdWx0YXJWZW5kZWRvcjpjb25zdWx0YXI6MiJdLCJFbmRlcmVjb0RhSW5zdGFuY2lhIjoiaHR0cDovL2xvY2FsaG9zdDozNTAwMDpfZ3dBZ2VudGVDb2JyYWRvckZvcmNhRGVWZW5kYXMsX2d3QXRpdmlkYWRlRm9yY2FEZVZlbmRhcyxfZ3dDZW50cm9EZUN1c3RvRm9yY2FEZVZlbmRhcyxfZ3dDbGllbnRlRm9yY2FEZVZlbmRhcyxfZ3dDb21pc3PDo29Gb3JjYURlVmVuZGFzLF9nd0NvbnRhc0FSZWNlYmVyRm9yY2FEZVZlbmRhcyxfZ3dFbXByZXNhRm9yY2FEZVZlbmRhcyxfZ3dFc3RvcXVlRm9yY2FEZVZlbmRhcyxfZ3dGYXR1cmFtZW50b0ZvcmNhRGVWZW5kYXMsX2d3RmluYWxpZGFkZUZvcmNhRGVWZW5kYXMsX2d3Rm9ybWFEZVBhZ2FtZW50b0ZvcmNhRGVWZW5kYXMsX2d3SXRlbURvUGVkaWRvRm9yY2FEZVZlbmRhcyxfZ3dMb2NhbGl6YWNhb0ZvcmNhRGVWZW5kYXMsX2d3TWVyY2Fkb3JpYUZvcmNhRGVWZW5kYXMsX2d3TW9lZGFGb3JjYURlVmVuZGFzLF9nd1BlZGlkb0ZvcmNhRGVWZW5kYXMsX2d3UG9saXRpY2FEZUNvYnJhbmNhRm9yY2FEZVZlbmRhcyxfZ3dQb2xpdGljYURlUHJlY29Gb3JjYURlVmVuZGFzLF9nd1RpcG9EZUNvYnJhbmNhRm9yY2FEZVZlbmRhcyxfZ3dUaXBvRGVEb2N1bWVudG9Gb3JjYURlVmVuZGFzLF9nd1RpcG9EZU9wZXJhY2FvRm9yY2FEZVZlbmRhcyxfZ3dUdXJub0ZvcmNhRGVWZW5kYXMsX2d3VW5pZGFkZURlTWVkaWRhRm9yY2FEZVZlbmRhcyxfZ3dWZW5kZWRvckZvcmNhRGVWZW5kYXMiLCJuYmYiOjE1OTA3NzAyMTEsImV4cCI6MTYwODA1MDI3MSwiaXNzIjoiYXV0aC52aXNpb25zIn0.eilTX3FnLb7c5V4t9u0LamGUv8aOkt_z4LU8K8fM4fIoEMGtJ5tQnpYBWhrzETOAgBaZNkAoNFgpdu05kesBqgyKT9zFOKg35gb4csEWPcFcCI48JKgJeUKDNmYhGxxOg47gsJDcyE8CJJEpnA5DhGrQRAEIpTRhH7IQiDPnde4lBWVwbGVf5QEZBwXDN1NHdf5YYIe_gjKjgRNHK_x7OpPsZt-GDQ23QcTdplfQxRJx9Wkhbr7aiuWcwOt0iaKa8Q5cgJ4LLVYeIPLLI8wnL6JLR_MFndZ1-HTzg3wxCll90_WGTHompy_JRoTJLDMo9J0llHLBLay_elD28ir8Bw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodelogradouro/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"tipodelogradouro",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Tipo de Operação",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodeoperacao/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"tipodeoperacao",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Turno",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/turno/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"turno",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Unidade de Medida",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/unidadedemedida/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"unidadedemedida",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Vendedor",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/vendedor/consultar",
+					"protocol": "https",
+					"host": [
+						"visions",
+						"topmanager",
+						"com",
+						"br"
+					],
+					"path": [
+						"Servidor_2.1.1_api",
+						"forcadevendas",
+						"vendedor",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
