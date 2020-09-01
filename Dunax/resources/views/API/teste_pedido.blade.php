@@ -17,15 +17,21 @@
     <div class="card">
         <h3 class="card-header">Pedido inserido com sucesso!</h3>
         <div class="card-body">
-            <h1>Número do pedido: <strong>{{ $store }}</strong></h1>
+            @foreach($pedido as $p)
+                <h1>Número do pedido: <strong>{{ $p['pedidoID'] }}</strong></h1>
+                <h3><strong>Vendedor: </strong>{{ $p['vendedor']['nome'] }}</h3>
+                <h3><strong>Empresa: </strong>{{ $p['organizacao']['nome'] }}</h3>
 
-            <br><br><br>
-            
-            <h3><strong>Razão Social do Cliente: </strong>{{ $body['cliente']['razaoSocial'] }}</h3>
-            <h3><strong>CNPJ do Cliente: </strong>{{ $body['cliente']['cnpJouCPF'] }}</h3>
+                <br><br>
+                
+                <h3><strong>Razão Social do Cliente: </strong>{{ $p['cliente']['razaoSocial'] }}</h3>
+                <h3><strong>CNPJ do Cliente: </strong>{{ $p['cliente']['cnpJouCPF'] }}</h3>            
+            @endforeach
+
+            <br>
 
             <h3><strong>Produtos:</strong></h3>
-
+            
             <table class="table table-hover">
                 <thead>
                     <tr class="table-success">
@@ -36,30 +42,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($body['itens'] as $itens)
-                        @foreach($objeto as $obj)
-                            @if($itens['objetoID'] == $obj['id'])
+                    @foreach($pedido as $p)
+                        @foreach($p['itens'] as $itens)
 
-                                @php
-                                    {{
-                                    $precoBase = max(json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/objetododetalhedapoliticadeprecos/consultartabeladeprecos?clienteID=' . $clienteID . '&objetoID=' . $itens['objetoID'],
+                            @php
+                                {{
+                                    $precoBase = max(json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/objetododetalhedapoliticadeprecos/consultartabeladeprecos?clienteID=' . 31641 . '&objetoID=' . $itens['objeto']['id'],
                                         ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true));                      
-                                    }}              
-                                @endphp
-                                <tr>
-                                    <th scope="row">{{ $itens['objetoID'] }} - {{ $obj['nome'] }} </th>
-                                    <td>{{ $itens['quantidade'] }}</td>
-                                    <td>R${{ $precoBase['precoBase'] }}</td>
-                                    <td>R${{ $itens['valorMercadoria'] }}</td>
-                                </tr>
-                            @endif
+                                }}              
+                            @endphp
+
+                            <tr>
+                                <th scope="row">{{ $itens['objeto']['id'] }} - {{ $itens['objeto']['nome'] }} </th>
+                                <td>{{ $itens['quantidade'] }}</td>
+                                <td>R${{ $precoBase['precoBase'] }}</td>
+                                <td>R${{ $itens['valorMercadoria'] }}</td>
+                            </tr>
                         @endforeach
                     @endforeach
                 </tbody>
             </table>
 
-            <h3><strong>Valor Total do Pedido: </strong>R${{ $itens['valorMercadoria'] }}</h3>
-            
+            <br>
+
+            @foreach($pedido as $p)
+                <h3><strong>Valor Total do Pedido: </strong>R${{ $p['valorPedido'] }}</h3>
+            @endforeach
+
             <a class="btn btn-primary mt-5" href="/">Inserir novo pedido</a>
             <br><br>
             <a class="btn btn-danger" href="/logout">Sair</a>

@@ -82,7 +82,8 @@ Route::get('/json-api3', 'ApiController@tipoCobranca');
 Route::get('/json-api4', 'ApiController@formaPagamento');
 Route::get('/json-api5', 'ApiController@Etapa2');
 Route::get('/json-api6', 'ApiController@Unidade');
-//Route::get('/json-api7', 'ApiController@Preco');
-Route::get('/teste-pedido', 'ApiController@store');
+Route::get('/json-api7', 'ApiController@store');
+//Route::get('/load-pedido', 'ApiController@load')->name('load_pedido');
+Route::get('/teste-pedido', 'ApiController@pedido');
 
 Route::get('/Dev', function(){return view('develop');});

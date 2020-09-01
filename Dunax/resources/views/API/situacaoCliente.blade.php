@@ -1,5 +1,3 @@
-
-
 <html>
   <head>
 
@@ -48,26 +46,36 @@
             @foreach($cliente as $cli)
                 @if($cli['id'] == $clienteID)
                     <h3><strong>Cliente: {{ $clienteID }} - {{ $cli['razaoSocial'] }}</strong></h3>
+                    <hr>
                 @endif
             @endforeach
 
-            @foreach($situacaoCliente as $sc)
-                @if($sc['clienteID'] == $clienteID)
-                    <h5>{{ $sc['titulo'] }}</h5>
-                @endif
-            @endforeach
+            @if(empty($situacaoCliente))
+              <h5><b><i><u>Não há situações em aberto para este cliente.</u></i></b></h5>
+            @else
+              @foreach($situacaoCliente as $sc)
+                  <h5>ID do Documento: <strong>{{ $sc['documentoID'] }}</strong></h5>
+                  <h5>Data de Emissão: <strong>{{ date('d/m/Y', strtotime(substr($sc['dataEmissao'], 0, 10))) }}</strong></h5>
+                  <h5>Data de Vencimento: <strong>{{ date('d/m/Y', strtotime(substr($sc['dataVencimento'], 0, 10))) }}</strong></h5>
+                  <h5>Valor Emitido ao Cliente: <strong>R${{ $sc['valorEmitido'] }},00</strong></h5>
+                      
+                    @if(array_key_exists('valorRecebido', $sc))
+                      <h5>Valor Recebido do Cliente: <strong>R${{ $sc['valorRecebido'] }},00</strong></h5>
+                    @else
+                      <h5><b><i><u>Não há valor recebido para este documento.</u></i></b></h5>
+                    @endif
+                      
+                  <h5>Saldo Devedor do Cliente: <strong>R${{ $sc['valorAReceber'] }},00</strong></h5>
 
-            @foreach($faturamento as $f)
-                @if($f['empresaID'] == $empresaID)
-                    <h5>{{ $f['empresaID'] }}</h5>
-                @endif
-            @endforeach
+                  <hr>
+              @endforeach
+            @endif
         </div>
       </div>
     </div>
 
       <button class="btn btn-success ml-3 mt-5" type="submit">Continuar</button>
-      <a class="btn btn-danger ml-3 mt-5" href="/json-api">Voltar</a>
+      <a class="btn btn-danger ml-3 mt-5" href="javascript:history.back()">Voltar</a>
     </form>
 
   </body>

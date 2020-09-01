@@ -82,7 +82,7 @@
     </div>
 
     <button class="btn btn-success ml-3 mt-5" type="submit">Continuar</button>
-      <a class="btn btn-danger ml-3 mt-5" href="/json-api3">Voltar</a>
+      <a class="btn btn-danger ml-3 mt-5" href="javascript:history.back()">Voltar</a>
   </form>
   </body>
 </html>

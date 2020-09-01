@@ -12,7 +12,7 @@
   </head>
 
   <body>
-  <form action="/teste-pedido" method="GET">
+  <form action="/json-api7" method="GET">
   @csrf
     <div style="display:none">
       <label for="empresa">Empresa</label>
@@ -98,7 +98,7 @@
           <select class="selectpicker mb-3" name="cliente" id="cliente" data-live-search="true">
             @foreach($cliente as $c)
               @if($c['id'] == $clienteID)
-                <option data-tokens="{{ $c['id'] }}" value="{{ $c['id'] }}">{{ $c['razaoSocial'] }}</option>
+                <option data-tokens="{{ $c['id'] }}" value="{{ $c['id'] }}">{{ $clienteID }} - {{ $c['razaoSocial'] }}</option>
               @endif
             @endforeach
           </select>
@@ -119,8 +119,10 @@
                     {{
                       $precoBase = max(json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/objetododetalhedapoliticadeprecos/consultartabeladeprecos?clienteID=' . $clienteID . '&objetoID=' . $o,
                           ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true));                      
-                    }}              
+                    }}        
                 @endphp
+                  <!-- EXISTEM PRODUTOS QUE NÃO CONSTAM NA CONSULTA DE TABELA DE PREÇOS 
+                    E ACABAM RETORNANDO ERRO DE CONSULTA. EXEMPLO: PRODUTO ID 92 --> 
                 
                   <label for="precoBase">Preço Base: <strong>R${{ $precoBase['precoBase'] }}</strong></label>
                   <input type="checkbox" name="precoBase[]" id="precoBase" checked="checked" value="{{ $precoBase['precoBase'] }}">
@@ -132,7 +134,7 @@
 
                 @foreach($unidade as $und)
                   @if($obj['id'] == $o && $obj['unidadeComercialID'] == $und['id'])
-                    <label for="unidade">Unidade de Medida do produto: <strong>{{ $und['sigla'] }}</strong></label>       
+                    <label for="unidade">Unidade de Medida do produto: <strong>{{ $und['nome'] }}</strong></label>       
                     <input type="checkbox" name="unidade[]" value="{{ $und['id'] }}" checked="checked"> 
                     <br> 
                   @endif
@@ -155,7 +157,7 @@
     </div>
 
     <button class="btn btn-outline-success ml-3 mt-5" type="submit">Inserir Pedido</button>
-      <a class="btn btn-danger ml-3 mt-5" href="/json-api5">Voltar</a>
+      <a class="btn btn-danger ml-3 mt-5" href="javascript:history.back()">Voltar</a>
   </form>
 
   <script>
