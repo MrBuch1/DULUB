@@ -45,7 +45,7 @@
         <div class="form-group">
             @foreach($cliente as $cli)
                 @if($cli['id'] == $clienteID)
-                    <h3><strong>Cliente: {{ $clienteID }} - {{ $cli['razaoSocial'] }}</strong></h3>
+                    <h3>Cliente: <strong>{{ $clienteID }} - {{ $cli['razaoSocial'] }}</strong></h3>
                     <hr>
                 @endif
             @endforeach
@@ -53,22 +53,45 @@
             @if(empty($situacaoCliente))
               <h5><b><i><u>Não há situações em aberto para este cliente.</u></i></b></h5>
             @else
-              @foreach($situacaoCliente as $sc)
-                  <h5>ID do Documento: <strong>{{ $sc['documentoID'] }}</strong></h5>
-                  <h5>Data de Emissão: <strong>{{ date('d/m/Y', strtotime(substr($sc['dataEmissao'], 0, 10))) }}</strong></h5>
-                  <h5>Data de Vencimento: <strong>{{ date('d/m/Y', strtotime(substr($sc['dataVencimento'], 0, 10))) }}</strong></h5>
-                  <h5>Valor Emitido ao Cliente: <strong>R${{ $sc['valorEmitido'] }},00</strong></h5>
-                      
-                    @if(array_key_exists('valorRecebido', $sc))
-                      <h5>Valor Recebido do Cliente: <strong>R${{ $sc['valorRecebido'] }},00</strong></h5>
+              <span class="badge badge-success text-light">Em Aberto</span>
+              <span class="badge badge-danger text-light">Vencido</span>
+              
+              <table class="table table-hover table-sm">
+                <thead>
+                  <tr class="table-secondary">
+                    <th scope="col">ID do Documento</th>
+                    <th scope="col">Data de Emissão</th>
+                    <th scope="col">Data de Vencimento</th>
+                    <th scope="col">Valor Emitido ao Cliente</th>
+                    <th scope="col">Valor Recebido do Cliente</th>
+                    <th scope="col">Saldo Devedor do Cliente</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($situacaoCliente as $sc)
+                    @if(substr($sc['dataVencimento'], 0, 10) >= $dataHoje)
+                      <tr class="table-success">
                     @else
-                      <h5><b><i><u>Não há valor recebido para este documento.</u></i></b></h5>
+                      <tr class="table-danger">
                     @endif
-                      
-                  <h5>Saldo Devedor do Cliente: <strong>R${{ $sc['valorAReceber'] }},00</strong></h5>
+                      <th>{{ $sc['documentoID'] }}</th>
+                      <td>{{ date('d/m/Y', strtotime(substr($sc['dataEmissao'], 0, 10))) }}</td>
+                      <td>{{ date('d/m/Y', strtotime(substr($sc['dataVencimento'], 0, 10))) }}</td>
+                      <td>R${{ $sc['valorEmitido'] }}</td>
 
-                  <hr>
-              @endforeach
+                      @if(array_key_exists('valorRecebido', $sc))
+                        <td>R${{ $sc['valorRecebido'] }}</td>
+                      @else
+                        <td>Não há valor recebido para este documento.</td>
+                      @endif
+
+                      <td>R${{ $sc['valorAReceber'] }}</td>
+                    </tr>
+                  @endforeach
+                </tbody>
+              </table>
+
+              <h3>Total dos débitos: <strong>R${{ $somaDebitos }}</strong></h3>
             @endif
         </div>
       </div>

@@ -39,16 +39,16 @@ class ApiController extends Controller
         //$token = substr($login, 44, -2);
         ////////////////////////////////
 
-        $empresa = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/empresa/consultar',
+        $empresa = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/empresa/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $tipoOP = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodeoperacao/consultar',
+        $tipoOP = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/tipodeoperacao/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar',
+        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/cliente/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
             
-        $vendedor = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/vendedor/consultar',
+        $vendedor = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/vendedor/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
 
@@ -68,22 +68,29 @@ class ApiController extends Controller
         $empresaID = $request->input('empresa');
         $opID = $request->input('tipoOP');
 
-        $dataHoje = Carbon::now()->toDateString() . "T" . Carbon::now()->toTimeString();
-
+        $dataHoje = Carbon::now()->toDateString();
         
-        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar',
+        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/cliente/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
     
 
-        //$faturamento = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/faturamento/consultar?vendedorID=&dataInicial=2020-05-29T00:00:00.000&dataFinal=' . $dataHoje,
+        //$faturamento = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/faturamento/consultar?vendedorID=&dataInicial=2020-05-29T00:00:00.000&dataFinal=' . $dataHoje,
             //['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $situacaoCliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/contasareceber/consultar?clienteID=' . $clienteID . '&empresaID=' . $empresaID,
+        $situacaoCliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/contasareceber/consultar?clienteID=' . $clienteID . '&empresaID=' . $empresaID,
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
 
+        $somaDebitos = 0;
+
+        foreach($situacaoCliente as $sc)
+        {
+            $somaDebitos += $sc['valorAReceber'];
+        }
+
         return view('API.situacaoCliente', compact('situacaoCliente', 'vendedorUser', 'cliente',
-                                                    'clienteID', 'empresaID', 'opID'));
+                                                    'clienteID', 'empresaID', 'opID', 
+                                                    'dataHoje', 'somaDebitos'));
     }
 
     public function form2(Request $request) 
@@ -92,13 +99,13 @@ class ApiController extends Controller
         
         $client = new GuzzleHttp\Client();
         
-        $empresa = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/empresa/consultar',
+        $empresa = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/empresa/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $tipoOP = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodeoperacao/consultar',
+        $tipoOP = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/tipodeoperacao/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar',
+        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/cliente/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
         $clienteID = $request->input('cliente'); //29455;
@@ -106,19 +113,19 @@ class ApiController extends Controller
         $opID = $request->input('tipoOP');
 
         
-        //$tipoDoc = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodedocumento/consultar',
+        //$tipoDoc = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/tipodedocumento/consultar',
             //['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $moeda = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/moeda/consultar',
+        $moeda = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/moeda/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $vendedor = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/vendedor/consultar',
+        $vendedor = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/vendedor/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $agCobrador = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/agentecobrador/consultar',
+        $agCobrador = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/agentecobrador/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $politicaCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/detalhepoliticadecobranca/filtrocobranca?clienteID=' . $clienteID,
+        $politicaCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/detalhepoliticadecobranca/filtrocobranca?clienteID=' . $clienteID,
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
     
         $id_agenteCob = array();
@@ -156,13 +163,13 @@ class ApiController extends Controller
         $moedaID = $request->input('moeda');
         $vendedorID = $request->input('vendedor');
         
-        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar',
+        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/cliente/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $tipoCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodecobranca/consultar',
+        $tipoCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/tipodecobranca/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $politicaCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/detalhepoliticadecobranca/filtrocobranca?clienteID=' . $clienteID,
+        $politicaCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/detalhepoliticadecobranca/filtrocobranca?clienteID=' . $clienteID,
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
     
         
@@ -202,13 +209,13 @@ class ApiController extends Controller
         $moedaID = $request->input('moeda');
         $vendedorID = $request->input('vendedor');
 
-        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar',
+        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/cliente/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $formaPagamento = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/formadepagamento/consultar',
+        $formaPagamento = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/formadepagamento/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer '. $token]])->getBody(), true);
         
-        $politicaCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/detalhepoliticadecobranca/filtrocobranca?clienteID=' . $clienteID,
+        $politicaCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/detalhepoliticadecobranca/filtrocobranca?clienteID=' . $clienteID,
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
     
 
@@ -251,20 +258,20 @@ class ApiController extends Controller
         $observacao = $request->input('obs');
         $comInterna = $request->input('comInterna');
 
-        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar',
+        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/cliente/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
 
-        $objeto = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/mercadoria/consultar',
+        $objeto = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/mercadoria/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $finalidade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/finalidade/consultar',
+        $finalidade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/finalidade/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $centroCustos = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/centrodecusto/consultar',
+        $centroCustos = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/centrodecusto/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $atividade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/atividade/consultar',
+        $atividade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/atividade/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
 
@@ -300,13 +307,13 @@ class ApiController extends Controller
         $objs = $request->input('objs');
         $qtds = $request->input('qtds');
 
-        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar',
+        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/cliente/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $objeto = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/mercadoria/consultar',
+        $objeto = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/mercadoria/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $unidade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/unidadedemedida/consultar',
+        $unidade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/unidadedemedida/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
         
@@ -331,44 +338,44 @@ class ApiController extends Controller
         
         
         
-        $empresa = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/empresa/consultar',
+        $empresa = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/empresa/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $tipoOP = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodeoperacao/consultar',
+        $tipoOP = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/tipodeoperacao/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
     
-        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar',
+        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/cliente/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $objeto = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/mercadoria/consultar',
+        $objeto = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/mercadoria/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);        
             
-        $finalidade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/finalidade/consultar',
+        $finalidade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/finalidade/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $centroCustos = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/centrodecusto/consultar',
+        $centroCustos = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/centrodecusto/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $atividade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/atividade/consultar',
+        $atividade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/atividade/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
 
-        //$tipoDoc = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodedocumento/consultar',
+        //$tipoDoc = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/tipodedocumento/consultar',
             //['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $moeda = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/moeda/consultar',
+        $moeda = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/moeda/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $vendedor = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/vendedor/consultar',
+        $vendedor = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/vendedor/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
-        $agCobrador = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/agentecobrador/consultar',
+        $agCobrador = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/agentecobrador/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $politicaCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/detalhepoliticadecobranca/filtrocobranca?clienteID=' . $clienteID,
+        $politicaCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/detalhepoliticadecobranca/filtrocobranca?clienteID=' . $clienteID,
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
             
-        $unidade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/unidadedemedida/consultar',
+        $unidade = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/unidadedemedida/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
         
         //////////////////////////////////////////////////////////////////////////////////////
@@ -392,7 +399,7 @@ class ApiController extends Controller
         $agentesCobradores = array_combine($ac_id, $ac_nome); //array_map(function($ac_id, $ac_nome){return $ac_id.' - '.$ac_nome;}, $ac_id, $ac_nome);
         //////////////////////////////////////////////////////////////////////////////////////
         
-        $tipoCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/tipodecobranca/consultar',
+        $tipoCobranca = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/tipodecobranca/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
         $idTipoCobranca = array();
@@ -414,7 +421,7 @@ class ApiController extends Controller
         $TiposCobranca = array_combine($tc_id, $tc_nome);
         //////////////////////////////////////////////////////////////////////////////////////
         
-        $formaPagamento = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/formadepagamento/consultar',
+        $formaPagamento = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/formadepagamento/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer '. $token]])->getBody(), true);
 
         $idFormaPagamento = array();
@@ -744,7 +751,7 @@ class ApiController extends Controller
         }
         
 
-        $store = $client->request('POST', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/pedido/incluir',
+        $store = $client->request('POST', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/pedido/incluir',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token],
             'json' => $body])->getBody();
 
@@ -776,7 +783,7 @@ class ApiController extends Controller
         $dataEntrega = Carbon::now()->addDay()->toDateString(); //. "T" . Carbon::now()->addDay()->toTimeString();
         
         
-        $pedido = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/itemdopedido/consultar?vendedorID=' . $vendedorID . '&dataInicial=' . $dataPedido . 'T00:00:00.000&dataFinal=' . $dataEntrega . 'T00:00:00.000&clienteID=' . $clienteID,
+        $pedido = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/itemdopedido/consultar?vendedorID=' . $vendedorID . '&dataInicial=' . $dataPedido . 'T00:00:00.000&dataFinal=' . $dataEntrega . 'T00:00:00.000&clienteID=' . $clienteID,
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
         return view('API.teste_pedido', compact('pedido', 'client', 'token'));
@@ -799,14 +806,14 @@ class ApiController extends Controller
         $clienteID = $request->input('cliente'); //29455;
         $objetoID = $request->input('objeto');
         
-        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/cliente/consultar',
+        $cliente = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/cliente/consultar',
         ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
     
 
-        $objeto = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/mercadoria/consultar',
+        $objeto = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/mercadoria/consultar',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
-        $precoBase = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/objetododetalhedapoliticadeprecos/consultartabeladeprecos?clienteID=' . $clienteID . '&objetoID=' . $objetoID,
+        $precoBase = json_decode($client->request('GET', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/objetododetalhedapoliticadeprecos/consultartabeladeprecos?clienteID=' . $clienteID . '&objetoID=' . $objetoID,
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody(), true);
 
             
@@ -899,7 +906,7 @@ class ApiController extends Controller
             "formaDePagamentoID" => 166
         ];
 
-        $store = $client->request('POST', 'https://visions.topmanager.com.br/Servidor_2.1.1_api/forcadevendas/pedido/incluir',
+        $store = $client->request('POST', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/pedido/incluir',
             ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token]])->getBody();
 
         

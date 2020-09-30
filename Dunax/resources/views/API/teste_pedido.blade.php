@@ -37,8 +37,8 @@
                     <tr class="table-success">
                         <th scope="col">Objetos</th>
                         <th scope="col">Quantidade</th>
-                        <th scope="col">Valor Unitário</th>
-                        <th scope="col">Valor Total dos Objetos</th>
+                        <th scope="col">Preço de Tabela</th>
+                        <th scope="col">Preço Efetivo</th>
                     </tr>
                 </thead>
                 <tbody>
