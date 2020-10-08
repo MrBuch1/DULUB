@@ -751,15 +751,21 @@ class ApiController extends Controller
         }
         
 
-        $store = $client->request('POST', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/pedido/incluir',
-            ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token],
-            'json' => $body])->getBody();
+        try {
+            $store = $client->request('POST', 'https://visions.topmanager.com.br/Servidor_2.2.0_api/forcadevendas/pedido/incluir',
+                ['headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token],
+                'json' => $body])->getBody();
+
+            return view('API.load_pedido', compact('store', 'client', 'token', 'cliente', 'clienteID', 
+                                                        'objeto', 'objs', 'qtds', 'body', 'vendedorID',
+                                                        'dataPedido', 'dataEntrega'));
+        }
+        catch (GuzzleHttp\Exception\ServerException $error) {
+            return view('errors.api_504');
+        }
+        
 
         //return redirect()->route('load_pedido');
-
-        return view('API.load_pedido', compact('store', 'client', 'token', 'cliente', 'clienteID', 
-                                                'objeto', 'objs', 'qtds', 'body', 'vendedorID',
-                                                'dataPedido', 'dataEntrega'));
 
     }
 
